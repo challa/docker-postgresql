@@ -20,6 +20,8 @@ sudo -u postgres psql -q <<-EOF
     ALTER ROLE "$USER" WITH LOGIN;
 EOF
 
+sudo -u postgres psql -q -c "ALTER USER \"$USER\" WITH NOSUPERUSER;"
+
 # Create dabatase
 if [ ! -z "$DB" ]; then
     echo "Creating database: \"$DB\"..."
